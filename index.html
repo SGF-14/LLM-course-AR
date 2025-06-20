@@ -624,13 +624,6 @@
                 circle.setAttribute('class', 'neural-node');
                 svg.appendChild(circle);
                 
-                const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                pulse.setAttribute('cx', node.x);
-                pulse.setAttribute('cy', node.y);
-                pulse.setAttribute('r', '8');
-                pulse.setAttribute('class', 'neural-pulse');
-                pulse.style.animation = `pulse 3s infinite ${index * 0.1}s`;
-                svg.appendChild(pulse);
             });
             
             container.appendChild(svg);
@@ -642,9 +635,11 @@
                 if (animationCount >= 20) return;
                 
                 const randomConnection = connections[Math.floor(Math.random() * connections.length)];
+
                 const signal = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 signal.setAttribute('r', '4');
                 signal.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--neural-pulse'));
+                
                 
                 const pathId = `path-${Date.now()}-${Math.random()}`;
                 const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
